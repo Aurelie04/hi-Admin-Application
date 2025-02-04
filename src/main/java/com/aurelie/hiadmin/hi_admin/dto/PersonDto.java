@@ -1,6 +1,9 @@
-package com.aurelie.hiadmin.hi_admin.entity;
+package com.aurelie.hiadmin.hi_admin.dto;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,35 +11,19 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "Persons")
-public class Person {
+@NoArgsConstructor
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PersonDto {
+
     private Long id;
-
-    @Column(name ="first_name")
     private String firstName;
-
-    @Column(name ="last_name")
     private String lastName;
-
-    @Column(name ="email_address", nullable = false, unique = true)
     private String email;
-
-    @Column(name ="description")
     private String description;
-
-    @Column(name ="phone_number")
     private String phone_number;
-
-    @Column(name ="amount")
     private double amount;
 
-
-
-    public Person(Long id, String firstName, String lastName, String email, String description, String phone_number, double amount) {
+    public PersonDto(Long id, String firstName, String lastName, String email, String description, String phone_number, double amount) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -44,9 +31,6 @@ public class Person {
         this.description = description;
         this.phone_number = phone_number;
         this.amount = amount;
-    }
-
-    public Person() {
     }
 
     public Long getId() {
