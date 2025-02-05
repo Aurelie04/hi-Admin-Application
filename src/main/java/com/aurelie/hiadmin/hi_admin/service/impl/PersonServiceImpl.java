@@ -43,4 +43,34 @@ public class PersonServiceImpl implements PersonService {
         return persons.stream().map((person) -> PersonMapper.mapToPersonDto(person))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public PersonDto updatePerson(Long id, PersonDto updatePerson) {
+
+       Person person = personRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("The person has been successfully updated: " + id)
+        );
+
+       person.setFirstName(updatePerson.getFirstName());
+       person.setLastName(updatePerson.getLastName());
+       person.setEmail(updatePerson.getEmail());
+       person.setPhone_number(updatePerson.getPhone_number());
+       person.setDescription(updatePerson.getDescription());
+       person.setAmount(updatePerson.getAmount());
+
+       Person personUpdated = personRepository.save(person);
+
+       return PersonMapper.mapToPersonDto(personUpdated);
+    }
+
+    @Override
+    public void deletePerson(Long id) {
+        Person person = personRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Person does not exist:" + id)
+        );
+
+        personRepository.deleteById(id);
+    }
+
+
 }

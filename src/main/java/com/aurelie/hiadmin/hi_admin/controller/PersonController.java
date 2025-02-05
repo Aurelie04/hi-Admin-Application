@@ -37,10 +37,25 @@ public class PersonController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonDto>> getAllPersons(){
+    public ResponseEntity<List<PersonDto>> getAllPersons() {
         List<PersonDto> persons = personService.getAllpersons();
         return ResponseEntity.ok(persons);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<PersonDto> updatePerson(@PathVariable("id") Long id,
+                                                  @RequestBody PersonDto updatePerson) {
+
+        PersonDto personDto = personService.updatePerson(id,updatePerson);
+
+        return ResponseEntity.ok(personDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePerson(@PathVariable("id") Long id){
+        personService.deletePerson(id);
+        return ResponseEntity.ok("The person has been successfully deleted in the record.");
+
+    }
 
 }
