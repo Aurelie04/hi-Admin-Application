@@ -21,9 +21,9 @@ public class PersonDto {
     private String email;
     private String description;
     private String phone_number;
-    private double amount;
+    private String amount;
 
-    public PersonDto(Long id, String firstName, String lastName, String email, String description, String phone_number, double amount) {
+    public PersonDto(Long id, String firstName, String lastName, String email, String description, String phone_number, String amount) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -81,11 +81,11 @@ public class PersonDto {
         this.phone_number = phone_number;
     }
 
-    public double getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 }

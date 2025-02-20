@@ -32,11 +32,11 @@ public class Person {
     private String phone_number;
 
     @Column(name ="amount")
-    private double amount;
+    private String amount;
 
 
 
-    public Person(Long id, String firstName, String lastName, String email, String description, String phone_number, double amount) {
+    public Person(Long id, String firstName, String lastName, String email, String description, String phone_number, String amount) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -97,11 +97,11 @@ public class Person {
         this.phone_number = phone_number;
     }
 
-    public double getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 }
